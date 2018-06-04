@@ -95,6 +95,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
 
+    // 3.设置web放行规则
     @Override
     public void configure(WebSecurity web) throws Exception {
         web
