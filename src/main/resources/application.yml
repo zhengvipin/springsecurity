@@ -1,0 +1,35 @@
+# Server configuration
+server:
+  port: 8086
+  servlet:
+    context-path:
+
+# Spring configuration
+spring:
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org.springframework.security: info
+
+jwt:
+  header: Authorization
+  token:
+    head: "Bearer "
+    secret: mySecret
+    expiration: 604800
+  route:
+    authentication:
+      path: /auth
+      refresh: /refresh

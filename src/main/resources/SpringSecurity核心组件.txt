@@ -1,0 +1,10 @@
+## Spring Security 的核心:
+
+* Authentication：代表了Spring Security中的当事人。
+* SecurityContext：拥有了Authentication、请求相关的信息。
+* SecurityContextHolder：用于获取SecurityContext。
+* GrantedAuthority：代表在应用程序中给当事人授予的权限。
+* UserDetails：用户详细信息。其实就是一个JavaBean。
+* UserDetailsService：UserDetails相关的业务处理。
+
+这几个是Spring Security的核心，其它的API都是围绕这些API展开的，都是为它们服务的。

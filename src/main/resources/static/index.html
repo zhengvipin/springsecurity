@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div style="width: 500px;margin: 0 auto;border: 1px solid #000;text-align: center;padding: 60px 0;margin-top: 150px">
+    <div style="margin: 10px">
+        <label for="username" style="display:inline-block;width: 100px;text-align: left">用户名：</label>
+        <input type="text" id="username">
+    </div>
+    <div style="margin: 10px">
+        <label for="password" style="display:inline-block;width: 100px;text-align: left">密码：</label>
+        <input type="text" id="password">
+    </div>
+    <div style="margin: 10px">
+        <button type="button" id="btnLogin">登录</button>
+    </div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jwt.js"></script>
+<script>
+    $('#btnLogin').click(() => {
+        $.ajax({
+            type: 'post',
+            url: URl + 'auth',
+            data: JSON.stringify({username: $('#username').val(), password: $('#password').val()}),
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            success: (data) => {
+                // 存储token
+                setJwtToken(data.token);
+
+                location.href = "success.html";
+            }
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+一、SpringBoot集成SpringSecurity
+1.创建用户类User(关联用户和角色)、角色类Role
+2.创建UserDao(注解：@Repository)，实现方法findByUsername()
+3.创建安全用户类JwtUser(关联安全用户和权限)，实现UserDetails接口
+4.创建JwtUserFactory工具类(关联角色和权限)，实现由User向JwtUser类对象的转换
+5.创建JwtUserService(注解：@Service)，实现UserDetailsService接口，重写loadByUsername()方法
+6.创建安全配置类WebSecurityConfig(注解：@Configuration、@EnableWebSecurity、@EnableGlobalMethodSecurity)，继承WebSecurityConfigurerAdapter
+	①配置认证管理器
+	②设置http拦截规则
+7.配置application.yml和编写控制器
+
+二、集成SpringSecurity和JWT
+1.创建JwtTokenUtil工具类，实现生成、解密、验证、刷新令牌的方法——(★)
+2.创建JwtAuthenticationTokenFilter过滤器类，并集成到配置类WebSecurityConfig——(★★)
+3.创建JwtAuthenticationException异常类以及异常处理类JwtAuthenticationExceptionHandler用于处理授权异常
+4.创建JwtAuthenticationRequest授权请求类以及授权响应类JwtAuthenticationResponse用于前后端数据的传输
+5.创建AuthenticationController授权控制器类，生成登录、刷新的方法
+6.创建UserController用户模型控制器，生成获得用户信息的方法
+7.创建jwt.js用于存取token
